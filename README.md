@@ -28,11 +28,11 @@ The script prints the Top 5 most active users by chaining commands with pipes:
 ** grep -E '^[0-9]+,[^,"]+,' "$FILE" | cut -d',' -f2 | sort | uniq -c | sort -nr | head -5 **
 
 Command	Job
-grep -E '^[0-9]+,[^,"]+,'	Keeps only lines that start a real tweet (digits, a comma, a username, a comma)
-cut -d',' -f2	Extracts the Username column
-sort	Puts identical usernames next to each other
-uniq -c	Counts each group of identical usernames
-sort -nr	Sorts by the count, highest first
-head -5	Keeps the top 5
+(grep -E '^[0-9]+,[^,"]+,')	Keeps only lines that start a real tweet (digits, a comma, a username, a comma)
+(cut -d',' -f2)	Extracts the Username column
+(sort)	Puts identical usernames next to each other
+(uniq -c)	Counts each group of identical usernames
+(sort -nr)	Sorts by the count, highest first
+(head -5)	Keeps the top 5
 
 It also uses the first argument as the file name (default twitter_dataset.csv) and, if the file does not exist, prints an error and exits with code 1.
