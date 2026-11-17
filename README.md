@@ -18,8 +18,11 @@ README.md	This file
 
 Error handling
 If the CSV file is missing, load_raw_data prints a clear message and exits.
+
 clean_data handles missing keys, blank values and non-numeric values without crashing.
+
 find_viral_tweet reports when there are no tweets to search.
+
 search_tweets rejects an empty search word and shows an example of valid input.
 
 ### How the shell script works (feed-analyzer.sh)
@@ -29,10 +32,15 @@ The script prints the Top 5 most active users by chaining commands with pipes:
 
 Command	Job
 (grep -E '^[0-9]+,[^,"]+,')	Keeps only lines that start a real tweet (digits, a comma, a username, a comma)
+
 (cut -d',' -f2)	Extracts the Username column
+
 (sort)	Puts identical usernames next to each other
+
 (uniq -c)	Counts each group of identical usernames
+
 (sort -nr)	Sorts by the count, highest first
+
 (head -5)	Keeps the top 5
 
 It also uses the first argument as the file name (default twitter_dataset.csv) and, if the file does not exist, prints an error and exits with code 1.
