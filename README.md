@@ -1,15 +1,13 @@
 # Lab 3: The Social Media Data Detective
 Repository contents
 
-File	                    Purpose
+data-detective.py:	        Python application (Quests 1 to 4)
 
-data-detective.py	        Python application (Quests 1 to 4)
+feed-analyzer.sh:	        Bash script that prints the Top 5 most active users
 
-feed-analyzer.sh	        Bash script that prints the Top 5 most active users
+twitter_dataset.csv:	      The dataset (columns: Tweet_ID, Username, Text, Retweets, Likes, Timestamp)
 
-twitter_dataset.csv	      The dataset (columns: Tweet_ID, Username, Text, Retweets, Likes, Timestamp)
-
-README.md	This file
+README.md:	This file
 
 
 ### How the Python program works
