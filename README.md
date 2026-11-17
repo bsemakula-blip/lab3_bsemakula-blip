@@ -34,7 +34,8 @@ search_tweets rejects an empty search word and shows an example of valid input.
 ### How the shell script works (feed-analyzer.sh)
 
 The script prints the Top 5 most active users by chaining commands with pipes:
-** grep -E '^[0-9]+,[^,"]+,' "$FILE" | cut -d',' -f2 | sort | uniq -c | sort -nr | head -5 **
+
+**grep -E '^[0-9]+,[^,"]+,' "$FILE" | cut -d',' -f2 | sort | uniq -c | sort -nr | head -5**
 
 (Command)	Job
 
