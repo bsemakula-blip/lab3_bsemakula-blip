@@ -110,7 +110,7 @@ def search_tweets(tweets, keyword):
         print("Error: search word cannot be empty. Example: Python")
         return []
 
-    matched = []            # new list for the matches
+    matches = []            # new list for the matches
 
     for tweet in tweets:
         if keyword in tweet["Text"].lower():
