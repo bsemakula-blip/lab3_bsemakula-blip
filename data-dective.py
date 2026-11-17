@@ -74,7 +74,7 @@ def find_viral_tweet(tweets):
         if tweet["Likes"] > viral["Likes"]:
             viral = tweet         # new most viral
 
-    print("Most viral tweet:")
+    print("Most viral post:")
     print("Username:", viral["Username"])
     print("Likes:", viral["Likes"])
     print("Text:", viral["Text"])
@@ -85,7 +85,20 @@ def custom_sort_by_likes(tweets):
     QUEST 3: Implement Bubble Sort or Selection Sort to sort the list 
     by 'Likes' in descending order. NO .sort() allowed!
     """
-    pass
+    num = len(tweets)
+
+    for i in range(num - 1):            # i = the position we're filling next
+        biggest_index = i             # assume the most liked is at position i
+
+        for j in range(i + 1, num):     # scan everything after i
+            if tweets[j]["Likes"] > tweets[biggest_index]["Likes"]:
+                biggest_index = j
+
+        # put the champion into position i
+        tweets[i], tweets[biggest_index] = tweets[biggest_index], tweets[i]
+
+    return tweets
+   
 
 def search_tweets(tweets, keyword):
     """
@@ -100,5 +113,12 @@ if __name__ == "__main__":
     
     # Call your functions here to complete the quests!
     clean_dataset = clean_dataset(dataset)
+    
     viral = find_viral_tweet(clean_dataset)
+    
+    sorted_tweets = custom_sort_by_likes(clean_dataset)
+    print("Top 10 Most Liked Tweets:")
+    for tweet in sorted_tweets[:10]:
+        print(tweet["Likes"], tweet["Username"])
+        
     # Example: clean_dataset = clean_data(dataset)
