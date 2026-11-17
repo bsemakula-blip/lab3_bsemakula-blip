@@ -17,6 +17,7 @@ README.md	This file
    Case-insensitive search for a keyword in the tweet text. Matching tweets are collected in a new list, and the number of matches is printed before the tweets.
 
 Error handling
+
 If the CSV file is missing, load_raw_data prints a clear message and exits.
 
 clean_data handles missing keys, blank values and non-numeric values without crashing.
