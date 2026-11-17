@@ -26,15 +26,15 @@ def clean_data(tweets):
     """
     def clean_data(tweets):
     cleaned = []          # New list to build up with append()
-    fixed_count = 0       # Rows where blank is replace with 0
-    removed_count = 0     # removed rows
+    fixednum = 0       # Rows where blank is replace with 0
+    removednum = 0     # removed rows
 
     for tweet in tweets:
         text = tweet.get("Text")          # .get() returns None instead of crashing if key is missing
 
         # If theres no text drop the whole row
         if text is None or text.strip() == "":
-            removed_count += 1
+            removednum += 1
             continue                      # go to the next tweet
 
         # convert blank Likes/Retweets to int 0
@@ -52,10 +52,10 @@ def clean_data(tweets):
                     row_was_fixed = True
 
         if row_was_fixed:
-            fixed_count += 1
+            fixednum += 1
         cleaned.append(tweet)
 
-    print(f"Data audit: {fixed_count} rows fixed, {removed_count} rows removed.")
+    print(f"Data audit: {fixednum} rows fixed, {removednum} rows removed.")
     return cleaned
 
 
@@ -64,7 +64,7 @@ def find_viral_tweet(tweets):
     QUEST 2: Loop through the list to find the tweet with the highest 'Likes'.
     Do not use the max() function.
     """
-    if len(tweets) == 0:          # so avoid crashing if tweets[0] (nothing to search)
+    if len(tweets) == 0:          # avoid crashing if tweets[0] (nothing to search)
         print("No tweets to search.")
         return None
 
@@ -104,7 +104,19 @@ def search_tweets(tweets, keyword):
     """
     QUEST 4: Search for a keyword and extract matching tweets into a new list.
     """
-    pass
+    keyword = keyword.strip().lower()
+
+    if keyword == "":
+        print("Error: search word cannot be empty. Example: Python")
+        return []
+
+    matched = []            # new list for the matches
+
+    for tweet in tweets:
+        if keyword in tweet["Text"].lower():
+            matches.append(tweet)
+
+    return matches
 
 if __name__ == "__main__":
     # Load the messy data
@@ -120,5 +132,12 @@ if __name__ == "__main__":
     print("Top 10 Most Liked Tweets:")
     for tweet in sorted_tweets[:10]:
         print(tweet["Likes"], tweet["Username"])
+
+    word = input("Enter a search word. Example: Python . ")
+    results = search_tweets(clean_dataset, word)
+
+    print(f"\n{len(results)} tweets matched '{word}'.")
+    for tweet in results:
+        print(f"@{tweet['Username']}: {tweet['Text']}\n")
         
     # Example: clean_dataset = clean_data(dataset)
