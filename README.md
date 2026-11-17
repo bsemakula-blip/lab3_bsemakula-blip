@@ -1,10 +1,16 @@
 # Lab 3: The Social Media Data Detective
 Repository contents
+
 File	                    Purpose
+
 data-detective.py	        Python application (Quests 1 to 4)
+
 feed-analyzer.sh	        Bash script that prints the Top 5 most active users
+
 twitter_dataset.csv	      The dataset (columns: Tweet_ID, Username, Text, Retweets, Likes, Timestamp)
+
 README.md	This file
+
 
 ### How the Python program works
 1. Data Auditor	clean_data
@@ -25,6 +31,7 @@ clean_data handles missing keys, blank values and non-numeric values without cra
 find_viral_tweet reports when there are no tweets to search.
 
 search_tweets rejects an empty search word and shows an example of valid input.
+
 
 ### How the shell script works (feed-analyzer.sh)
 
