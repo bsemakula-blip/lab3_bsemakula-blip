@@ -24,7 +24,6 @@ def clean_data(tweets):
     Check for missing text, and replace empty likes/retweets with 0.
     Return a clean list of tweets.
     """
-    def clean_data(tweets):
     cleaned = []          # New list to build up with append()
     fixednum = 0       # Rows where blank is replace with 0
     removednum = 0     # removed rows
@@ -124,7 +123,7 @@ if __name__ == "__main__":
     print(f"Loaded {len(dataset)} raw tweets.\n")
     
     # Call your functions here to complete the quests!
-    clean_dataset = clean_dataset(dataset)
+    clean_dataset = clean_data(dataset)
     
     viral = find_viral_tweet(clean_dataset)
     
