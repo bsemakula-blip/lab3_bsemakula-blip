@@ -24,14 +24,47 @@ def clean_data(tweets):
     Check for missing text, and replace empty likes/retweets with 0.
     Return a clean list of tweets.
     """
-    pass
+    def clean_data(tweets):
+    cleaned = []          # New list to build up with append()
+    fixed_count = 0       # Rows where blank is replace with 0
+    removed_count = 0     # removed rows
+
+    for tweet in tweets:
+        text = tweet.get("Text")          # .get() returns None instead of crashing if key is missing
+
+        # If theres no text drop the whole row
+        if text is None or text.strip() == "":
+            removed_count += 1
+            continue                      # go to the next tweet
+
+        # convert blank Likes/Retweets to int 0
+        row_was_fixed = False
+        for field in ("Likes", "Retweets"):
+            value = tweet.get(field)
+            if value is None or value.strip() == "":
+                tweet[field] = 0
+                row_was_fixed = True
+            else:
+                try:
+                    tweet[field] = int(value)
+                except ValueError:        # example "abc" or "12.5"
+                    tweet[field] = 0
+                    row_was_fixed = True
+
+        if row_was_fixed:
+            fixed_count += 1
+        cleaned.append(tweet)
+
+    print(f"Data audit: {fixed_count} rows fixed, {removed_count} rows removed.")
+    return cleaned
+
 
 def find_viral_tweet(tweets):
     """
     QUEST 2: Loop through the list to find the tweet with the highest 'Likes'.
     Do not use the max() function.
     """
-    pass
+    
 
 def custom_sort_by_likes(tweets):
     """
@@ -52,4 +85,6 @@ if __name__ == "__main__":
     print(f"Loaded {len(dataset)} raw tweets.\n")
     
     # Call your functions here to complete the quests!
+    clean_dataset = clean_dataset(dataset)
+    
     # Example: clean_dataset = clean_data(dataset)
